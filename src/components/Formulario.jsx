@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Button, Form, Row, Col, Alert } from 'react-bootstrap'
 import useCategorias from '../hooks/useCategorias'
+import useBebidas from '../hooks/useBebidas'
 
 const Formulario = () => {
 
@@ -11,6 +12,7 @@ const Formulario = () => {
 
     const [ alerta, setAlerta ] = useState('')
     const { categorias } = useCategorias()
+    const { consultarBebida } = useBebidas()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -20,6 +22,7 @@ const Formulario = () => {
             return
         }
         setAlerta('')
+        consultarBebida(busqueda)
     }
 
   return (
@@ -30,7 +33,7 @@ const Formulario = () => {
         <Row>
             <Col md={6}>
                 <Form.Group className="mb-3">
-                    <Form.Label htmlFor="nombre">Nombre Bebida</Form.Label>
+                    <Form.Label htmlFor="nombre">Nombre Copete</Form.Label>
 
                     <Form.Control 
                         id="nombre"
@@ -48,7 +51,7 @@ const Formulario = () => {
             </Col>
             <Col md={6}>
             <Form.Group className="mb-3">
-                    <Form.Label htmlFor="categoria">Categoria Bebida</Form.Label>
+                    <Form.Label htmlFor="categoria">Categoria Copete</Form.Label>
 
                     <Form.Select
                         id="categoria"
@@ -80,7 +83,7 @@ const Formulario = () => {
                     className='text-uppercase w-100'
                     type="submit"
                 >
-                    Buscar Bebidas
+                    Que Comience la Fiesta
                 </Button>
             </Col>
         </Row>
